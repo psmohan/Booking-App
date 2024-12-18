@@ -1,0 +1,39 @@
+<div class="booking-controls">
+    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+        <mat-label>Number of Rooms</mat-label>
+        <input matInput type="number" [(ngModel)]="numberOfRooms" />
+    </mat-form-field>
+
+    <mat-form-field subscriptSizing="dynamic" appearance="outline">
+        <mat-label>Booking Type</mat-label>
+        <mat-select [(ngModel)]="bookingType">
+            <mat-option value="Fresh">Fresh Booking</mat-option>
+            <mat-option value="Associated">Associated Booking</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="bookRooms()">Book Rooms</button>
+    <button mat-raised-button color="accent" (click)="randomSelection()">Generate Random Rooms</button>
+    <button mat-raised-button color="warn" (click)="resetAll()">Reset</button>
+</div>
+<div class="building">
+    <div class="lift">
+        <mat-icon class="elevator-top-to-bottom">elevator</mat-icon>
+        <mat-icon class="elevator-bottom-to-top">elevator</mat-icon>
+    </div>
+
+
+    <div class="floors">
+        <div *ngFor="let floor of rooms | keyvalue" class="floor">
+            <div class="rooms">
+                <span *ngFor="let room of floor.value" [ngClass]="{
+                  'booked': room.booked,
+                  'random-booking': room.randomBooked
+                }" [matTooltip]="room.booked || room.randomBooked ? 'Occupied' : ''">
+                    {{ floor.key * 100 + room.index + 1 }}
+                </span>
+                <span class="party-zone" *ngIf="floor.key===10">Party Zone</span>
+            </div>
+        </div>
+    </div>
+</div>

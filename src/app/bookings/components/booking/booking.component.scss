@@ -1,0 +1,98 @@
+.booking-controls {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  align-items: center;
+  margin: 1rem;
+  flex-wrap: wrap;
+  flex-basis: 200;
+}
+
+.building {
+  display: flex;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  justify-content: center;
+
+  .lift {
+    border: 1px solid gray;
+    border-radius: 4px;
+    padding: 0.5rem;
+    mat-icon {
+      position: relative;
+
+      animation: moveElevator 4s infinite alternate;
+    }
+
+    /* Animation for the elevator going from top to bottom */
+    .elevator-top-to-bottom {
+      animation: moveTopToBottom 10s infinite linear;
+    }
+
+    /* Animation for the elevator going from bottom to top */
+    .elevator-bottom-to-top {
+      animation: moveBottomToTop 10s infinite linear;
+    }
+
+    @keyframes moveTopToBottom {
+      0% {
+        top: 5%;
+      }
+      50% {
+        top: 95%;
+      }
+      100% {
+        top: 5%;
+      }
+    }
+
+    @keyframes moveBottomToTop {
+      0% {
+        top: 95%;
+      }
+      50% {
+        top: 5%;
+      }
+      100% {
+        top: 95%;
+      }
+    }
+  }
+  .floors {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+.rooms {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.rooms span {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+}
+
+.party-zone {
+  flex: 1;
+}
+
+.rooms span.booked {
+  background-color: green;
+  color: white;
+}
+
+.rooms span.random-booking {
+  background-color: red;
+  color: white;
+}
